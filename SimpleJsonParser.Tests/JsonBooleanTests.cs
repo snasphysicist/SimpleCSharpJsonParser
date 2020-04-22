@@ -1,6 +1,5 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SimpleJsonParser;
 
 namespace SimpleJsonParser.Tests
 {
