@@ -30,10 +30,9 @@ namespace SimpleJsonParser.Tests
         }
 
         [DataTestMethod]
-        [DataRow("\"Test\\\"String\"", "Test\"String")]
         [DataRow("\"Test\\\\String\"", "Test\\String")]
-        [DataRow("Test\\\\\\\"String\"", "Test\\\"String")]
-        [DataRow("\"Test String\\\\\"", "TestString\\")]
+        [DataRow("\"Test\\\\\\\"String\"", "Test\\\"String")]
+        [DataRow("\"Test String\\\\\"", "Test String\\")]
         public void ShouldParseProperlyDelimitedWithEscapesStringSucceed(
             string jsonFragment,
             string stringContent
