@@ -22,7 +22,6 @@ namespace SimpleJsonParser
             jsonRemainder = StringUtils.StripLeadingJsonWhitespace(
                 jsonFragment
             );
-
             // Find character to denote end of value
             int i = 0;
             while(

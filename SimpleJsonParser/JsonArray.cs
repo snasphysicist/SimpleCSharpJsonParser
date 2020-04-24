@@ -68,30 +68,51 @@ namespace SimpleJsonParser
                 elements.AddLast(
                     nextElement
                 );
-                int closingIndex = nextClosingCharacterIndex(
-                    jsonRemainder
-                );
-                if (closingIndex == jsonRemainder.Length)
-                {
-                    // Could not find end of element, thus badly formatted json
-                    Success = false;
-                    jsonRemainder = jsonFragment;
-                    return Success;
-                }
-                // Otherwise, move to after the closing element character
-                jsonRemainder = jsonRemainder.Substring(
-                    closingIndex + 1
-                );
                 // Remove leading whitespace
                 jsonRemainder = StringUtils.StripLeadingJsonWhitespace(
                     jsonRemainder
                 );
+                // Next character should be either comma or bracket
+                if (
+                    (jsonRemainder.Length > 0)
+                    && (
+                        StringUtils.GetFirstCharacter(
+                            jsonRemainder
+                        ) == ","
+                    )
+                ) {
+                    // If it's a comma, remove it
+                    jsonRemainder = StringUtils.StripFirstCharacter(
+                        jsonRemainder
+                    );
+                } else if (
+                    (jsonRemainder.Length > 0)
+                    && (
+                        StringUtils.GetFirstCharacter(
+                            jsonRemainder
+                        ) == "]"
+                    )
+                ) {
+                    /* 
+                     * For a closing bracket do nothing
+                     * It will be caught on next loop condition check
+                     */
+                } else {
+                    // If it's anything else, bad formatting
+                    Success = false;
+                    jsonRemainder = jsonFragment;
+                    return Success;
+                }
             }
             // Landing here should mean success
             Success = true;
             // Move linked list elements to values array
             values = new IJsonElement[elements.Count];
             elements.CopyTo(values, 0);
+            // Remember to remove the closing bracket
+            jsonRemainder = StringUtils.StripFirstCharacter(
+                jsonRemainder
+            );
             return Success;
         }
 
