@@ -60,7 +60,10 @@ namespace SimpleJsonParser
                     out jsonRemainder
                 );
                 // This must be a string, or invalid json
-                if (!nextKey.IsString())
+                if (
+                    (nextKey == null)
+                    || !nextKey.IsString()
+                )
                 {
                     Success = false;
                     jsonRemainder = jsonFragment;
