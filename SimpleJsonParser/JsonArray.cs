@@ -75,18 +75,24 @@ namespace SimpleJsonParser
                 );
                 // Next character should be either comma or bracket
                 if (
-                    StringUtils.GetFirstCharacter(
-                        jsonRemainder
-                    ) == ","
+                    (jsonRemainder.Length > 0)
+                    && (
+                        StringUtils.GetFirstCharacter(
+                            jsonRemainder
+                        ) == ","
+                    )
                 ) {
                     // If it's a comma, remove it
                     jsonRemainder = StringUtils.StripFirstCharacter(
                         jsonRemainder
                     );
                 } else if (
-                    StringUtils.GetFirstCharacter(
-                        jsonRemainder
-                    ) == "]"
+                    (jsonRemainder.Length > 0)
+                    && (
+                        StringUtils.GetFirstCharacter(
+                            jsonRemainder
+                        ) == "]"
+                    )
                 ) {
                     /* 
                      * For a closing bracket do nothing
