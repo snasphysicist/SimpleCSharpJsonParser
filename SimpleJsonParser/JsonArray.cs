@@ -1,5 +1,4 @@
 
-using System;
 using System.Collections.Generic;
 
 namespace SimpleJsonParser
@@ -54,13 +53,10 @@ namespace SimpleJsonParser
                 jsonRemainder = StringUtils.StripLeadingJsonWhitespace(
                     jsonRemainder
                 );
-                Console.WriteLine(jsonRemainder);
                 nextElement = SimpleJsonParser.ParseOne(
                     jsonRemainder,
                     out jsonRemainder
                 );
-                Console.WriteLine(nextElement);
-                Console.WriteLine(jsonRemainder);
                 // A returned null means that the json was not parseable
                 if (nextElement == null)
                 {
