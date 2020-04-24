@@ -54,10 +54,13 @@ namespace SimpleJsonParser
                 jsonRemainder = StringUtils.StripLeadingJsonWhitespace(
                     jsonRemainder
                 );
+                Console.WriteLine(jsonRemainder);
                 nextElement = SimpleJsonParser.ParseOne(
                     jsonRemainder,
                     out jsonRemainder
                 );
+                Console.WriteLine(nextElement);
+                Console.WriteLine(jsonRemainder);
                 // A returned null means that the json was not parseable
                 if (nextElement == null)
                 {
@@ -110,6 +113,10 @@ namespace SimpleJsonParser
             // Move linked list elements to values array
             values = new IJsonElement[elements.Count];
             elements.CopyTo(values, 0);
+            // Remember to remove the closing bracket
+            jsonRemainder = StringUtils.StripFirstCharacter(
+                jsonRemainder
+            );
             return Success;
         }
 
