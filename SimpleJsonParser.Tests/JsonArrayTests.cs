@@ -53,7 +53,7 @@ namespace SimpleJsonParser.Tests
         }
 
         [DataTestMethod]
-        [DataRow("[[2, 1], [3, 2], {\"test\": 1, \"value\": true}]]", 3)]
+        [DataRow("[[2, 1], [3, 2], {\"test\": 1, \"value\": true}]", 3)]
         public void ShouldParseWellFormattedArrayWithNestedElementsSucceed(
             string jsonFragment,
             int numberOfElements
