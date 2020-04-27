@@ -26,8 +26,11 @@ namespace SimpleJsonParser
             ) {
                 Success = true;
             }
-            // If conditions not met, invalid
-            Success = false;
+            else 
+            {
+                // If conditions not met, invalid
+                Success = false;
+            }
         }
 
         public static IJsonElement ParseOne(
