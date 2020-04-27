@@ -196,12 +196,12 @@ namespace SimpleJsonParser
 
         public bool IsArray()
         {
-            return true;
+            return false;
         }
 
         public bool IsObject()
         {
-            return false;
+            return true;
         }
 
         public bool? AsBoolean()
